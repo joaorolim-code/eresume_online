@@ -6,7 +6,6 @@ from bottle import redirect, template, response
 app = Bottle()
 ctl = Application()
 
-
 #-----------------------------------------------------------------------------
 # Rotas:
 
@@ -29,6 +28,29 @@ def action_curriculo(parameter=None):
         return ctl.render('curriculo') 
     else:
         return ctl.render('curriculo', parameter) 
+    
+@app.route('/portal', method='GET')
+def login():
+    return ctl.render('portal')
+
+
+@app.route('/portal', method='POST')
+def action_portal():
+    username = request.forms.get('username')
+    password = request.forms.get('password')
+    session_id, username= ctl.authenticate_user(username, password)
+    if session_id:
+        response.set_cookie('session_id', session_id, httponly=True, \
+        secure=True, max_age=3600)
+        redirect(f'/pagina/{username}')
+    else:
+        return redirect('/portal')
+    
+@app.route('/logout', method='POST')
+def logout():
+    ctl.logout_user()
+    response.delete_cookie('session_id')
+    redirect('/helper')
 
 #-----------------------------------------------------------------------------
 
