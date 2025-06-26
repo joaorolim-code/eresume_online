@@ -8,14 +8,12 @@ class Application():
     def __init__(self):
 
         self.pages = {
-        'pagina': self.pagina,
-        'portal': self.portal
+            'pagina': self.pagina,
+            'portal': self.portal
     }
 
         self.__model= DataRecord()
         self.__current_loginusername= None
-    
-
 
     def render(self,page,parameter=None):
         content = self.pages.get(page, self.helper)
@@ -66,4 +64,3 @@ class Application():
         session_id = self.get_session_id()
         if session_id:
             self.__model.logout(session_id)
-    

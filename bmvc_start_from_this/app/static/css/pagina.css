@@ -17,7 +17,7 @@ img {
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
-.curriculo-container {
+.pagina-container {
     background: #fff;
     padding: 30px;
     border-radius: 8px;
@@ -90,7 +90,7 @@ hr {
 }
 
 @media (max-width: 768px) {
-    .curriculo-container {
+    .pagina-container {
         padding: 15px;
     }
     h1 {

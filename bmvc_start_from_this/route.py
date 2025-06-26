@@ -21,13 +21,13 @@ def helper(info= None):
 #-----------------------------------------------------------------------------
 # Suas rotas aqui:
 
-@app.route('/curriculo', methods=['GET'])
-@app.route('/curriculo/<parameter>', methods=['GET'])
+@app.route('/pagina', methods=['GET'])
+@app.route('/pagina/<parameter>', methods=['GET'])
 def action_curriculo(parameter=None): 
     if not parameter:
-        return ctl.render('curriculo') 
+        return ctl.render('pagina') 
     else:
-        return ctl.render('curriculo', parameter) 
+        return ctl.render('pagina', parameter) 
     
 @app.route('/portal', method='GET')
 def login():
